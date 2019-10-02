@@ -26,31 +26,30 @@ public class MainActivity extends AppCompatActivity {
 
         text = histView.getText().toString();
         clicks = 0;
+        if (displayView.getText().toString().charAt(displayView.getText().toString().length() -1) != '.') {
 
-        if(displayView.getText().toString() != "") {
-            if (text == ""){
-                value1 = Double.parseDouble(displayView.getText().toString());
-                histView.setText(displayView.getText().toString()+ " " + operatorSymbol + " ");
-                displayView.setText("");
-                operator = operatorText;
-            }
-            else if(Character.isDigit(text.charAt(text.length() -1))){
-                value1 = Double.parseDouble(displayView.getText().toString());
-                histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
-                displayView.setText("");
-            }
-            else {
-                value2 = Double.parseDouble(displayView.getText().toString());
-                calcSum = functions.calculate(displayView.getText().toString(), operator, value1, value2);
-                displayView.setText("");
-                if (functions.isDecimal(calcSum)){
-                    histView.setText(Double.toString(calcSum) + " " + operatorSymbol + " ");
+            if (displayView.getText().toString() != "") {
+                if (text == "") {
+                    value1 = Double.parseDouble(displayView.getText().toString());
+                    histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+                    displayView.setText("");
+                    operator = operatorText;
+                } else if (Character.isDigit(text.charAt(text.length() - 1))) {
+                    value1 = Double.parseDouble(displayView.getText().toString());
+                    histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+                    displayView.setText("");
+                } else {
+                    value2 = Double.parseDouble(displayView.getText().toString());
+                    calcSum = functions.calculate(displayView.getText().toString(), operator, value1, value2);
+                    displayView.setText("");
+                    if (functions.isDecimal(calcSum)) {
+                        histView.setText(Double.toString(calcSum) + " " + operatorSymbol + " ");
+                    } else {
+                        histView.setText(Integer.toString((int) calcSum) + " " + operatorSymbol + " ");
+                    }
+                    value1 = calcSum;
+                    operator = operatorText;
                 }
-                else {
-                    histView.setText(Integer.toString((int)calcSum) + " " + operatorSymbol + " ");
-                }
-                value1 = calcSum;
-                operator = operatorText;
             }
         }
     }
@@ -338,8 +337,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!displayView.getText().toString().contains(".")){
-                    displayView.setText(displayView.getText() + ".");
+                if (displayView.getText().toString() == "") {
+                    displayView.setText(displayView.getText() + "0.");
+                }
+                else {
+                    if (!displayView.getText().toString().contains(".")) {
+                        displayView.setText(displayView.getText() + ".");
+                    }
                 }
             }
         });
@@ -347,14 +351,13 @@ public class MainActivity extends AppCompatActivity {
         btnNeg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                float disValue = Float.parseFloat(displayView.getText().toString());
-
-                if(functions.isDecimal(Float.parseFloat(displayView.getText().toString()))){
-                    displayView.setText(Double.toString(disValue * -1));
-                }
-                else {
-                    displayView.setText(Double.toString((int) disValue * -1));
+                if (displayView.getText().toString() != "" && displayView.getText().toString().charAt(displayView.getText().toString().length() - 1) != '.') {
+                    double disValue = Double.parseDouble(displayView.getText().toString());
+                    if (functions.isDecimal(Double.parseDouble(displayView.getText().toString()))) {
+                        displayView.setText(Double.toString(disValue * -1));
+                    } else {
+                        displayView.setText(Double.toString((int) disValue * -1));
+                    }
                 }
             }
         });
