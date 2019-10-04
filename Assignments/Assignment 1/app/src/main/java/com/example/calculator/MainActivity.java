@@ -22,35 +22,50 @@ public class MainActivity extends AppCompatActivity {
 
     CalcFunctions functions = new CalcFunctions();
 
-    void operatorClicked(String operatorSymbol, String operatorText){
+    void operatorClicked(String operatorSymbol, String operatorText) {
 
         text = histView.getText().toString();
         clicks = 0;
-        if (displayView.getText().toString().charAt(displayView.getText().toString().length() -1) != '.') {
+        if (displayView.getText().toString() != "") {
+            if (displayView.getText().toString().charAt(displayView.getText().toString().length() - 1) != '.') {
 
-            if (displayView.getText().toString() != "") {
-                if (text == "") {
-                    value1 = Double.parseDouble(displayView.getText().toString());
-                    histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
-                    displayView.setText("");
-                    operator = operatorText;
-                } else if (Character.isDigit(text.charAt(text.length() - 1))) {
-                    value1 = Double.parseDouble(displayView.getText().toString());
-                    histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
-                    displayView.setText("");
-                } else {
-                    value2 = Double.parseDouble(displayView.getText().toString());
-                    calcSum = functions.calculate(displayView.getText().toString(), operator, value1, value2);
-                    displayView.setText("");
-                    if (functions.isDecimal(calcSum)) {
-                        histView.setText(Double.toString(calcSum) + " " + operatorSymbol + " ");
+                if (displayView.getText().toString() != "") {
+                    if (text == "") {
+                        value1 = Double.parseDouble(displayView.getText().toString());
+                        histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+                        displayView.setText("");
+                        operator = operatorText;
+                    } else if (Character.isDigit(text.charAt(text.length() - 1))) {
+                        value1 = Double.parseDouble(displayView.getText().toString());
+                        histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+                        displayView.setText("");
                     } else {
-                        histView.setText(Integer.toString((int) calcSum) + " " + operatorSymbol + " ");
+                        value2 = Double.parseDouble(displayView.getText().toString());
+                        if (value2 == 0 && operator == "divide") {
+                            histView.setText("");
+                            displayView.setText("NaN");
+                        } else {
+                            calcSum = functions.calculate(displayView.getText().toString(), operator, value1, value2);
+                            displayView.setText("");
+                            if (functions.isDecimal(calcSum)) {
+                                histView.setText(Double.toString(calcSum) + " " + operatorSymbol + " ");
+                            } else {
+                                histView.setText(Integer.toString((int) calcSum) + " " + operatorSymbol + " ");
+                            }
+                            value1 = calcSum;
+                            operator = operatorText;
+                        }
                     }
-                    value1 = calcSum;
-                    operator = operatorText;
                 }
             }
+        }
+    }
+
+    void equalsPressed(){
+        clicks = 0;
+        if (equalsPressed || displayView.getText().toString() == "NaN"){
+            displayView.setText("");
+            equalsPressed = false;
         }
     }
 
@@ -85,11 +100,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "1");
             }
         });
@@ -98,11 +109,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "2");
             }
         });
@@ -111,11 +118,7 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "3");
             }
         });
@@ -124,11 +127,7 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "4");
             }
         });
@@ -137,11 +136,7 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "5");
             }
         });
@@ -150,11 +145,7 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "6");
             }
         });
@@ -163,11 +154,7 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "7");
             }
         });
@@ -176,11 +163,7 @@ public class MainActivity extends AppCompatActivity {
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "8");
             }
         });
@@ -189,11 +172,7 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "9");
             }
         });
@@ -202,11 +181,7 @@ public class MainActivity extends AppCompatActivity {
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicks = 0;
-                if (equalsPressed){
-                    displayView.setText("");
-                    equalsPressed = false;
-                }
+                equalsPressed();
                 displayView.setText(displayView.getText() + "0");
             }
         });
@@ -265,12 +240,18 @@ public class MainActivity extends AppCompatActivity {
                         equalsPressed = true;
                         if (displayView.getText() != "") {
                             clicks = 0;
-                            value2 = Float.parseFloat(displayView.getText().toString());
+                            value2 = Double.parseDouble(displayView.getText().toString());
                             histView.setText("");
-                            if (functions.isDecimal(Float.parseFloat(displayView.getText().toString()))) {
-                                displayView.setText(Double.toString(functions.calculate(displayView.getText().toString(), operator, value1, value2)));
-                            } else {
-                                displayView.setText(Integer.toString((int) functions.calculate(displayView.getText().toString(), operator, value1, value2)));
+                            value1 = functions.calculate(displayView.getText().toString(), operator, value1, value2);
+                            if (value2 == 0 && operator == "divide"){
+                                displayView.setText("NaN");
+                            }
+                            else {
+                                if (functions.isDecimal(Double.parseDouble(displayView.getText().toString())) || functions.isDecimal(value1)) {
+                                    displayView.setText(Double.toString(value1));
+                                } else {
+                                    displayView.setText(Integer.toString((int) value1));
+                                }
                             }
                         }
                     }
@@ -356,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
                     if (functions.isDecimal(Double.parseDouble(displayView.getText().toString()))) {
                         displayView.setText(Double.toString(disValue * -1));
                     } else {
-                        displayView.setText(Double.toString((int) disValue * -1));
+                        displayView.setText(Integer.toString((int) disValue * -1));
                     }
                 }
             }
