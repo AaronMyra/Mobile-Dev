@@ -22,39 +22,38 @@ public class MainActivity extends AppCompatActivity {
 
     CalcFunctions functions = new CalcFunctions();
 
-    void operatorClicked(String operatorSymbol, String operatorText) {
+    void operatorClicked(String operatorSymbol, String operatorText){
 
         text = histView.getText().toString();
         clicks = 0;
-        if (displayView.getText().toString() != "") {
-            if (displayView.getText().toString().charAt(displayView.getText().toString().length() - 1) != '.') {
+        if (displayView.getText().toString().charAt(displayView.getText().toString().length() -1) != '.') {
 
-                if (displayView.getText().toString() != "") {
-                    if (text == "") {
-                        value1 = Double.parseDouble(displayView.getText().toString());
-                        histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+            if (displayView.getText().toString() != "") {
+                if (text == "") {
+                    value1 = Double.parseDouble(displayView.getText().toString());
+                    histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+                    displayView.setText("");
+                    operator = operatorText;
+                } else if (Character.isDigit(text.charAt(text.length() - 1))) {
+                    value1 = Double.parseDouble(displayView.getText().toString());
+                    histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
+                    displayView.setText("");
+                } else {
+                    value2 = Double.parseDouble(displayView.getText().toString());
+                    if (value2 == 0 && operator == "divide"){
+                        histView.setText("");
+                        displayView.setText("NaN");
+                    }
+                    else {
+                        calcSum = functions.calculate(displayView.getText().toString(), operator, value1, value2);
                         displayView.setText("");
-                        operator = operatorText;
-                    } else if (Character.isDigit(text.charAt(text.length() - 1))) {
-                        value1 = Double.parseDouble(displayView.getText().toString());
-                        histView.setText(displayView.getText().toString() + " " + operatorSymbol + " ");
-                        displayView.setText("");
-                    } else {
-                        value2 = Double.parseDouble(displayView.getText().toString());
-                        if (value2 == 0 && operator == "divide") {
-                            histView.setText("");
-                            displayView.setText("NaN");
+                        if (functions.isDecimal(calcSum)) {
+                            histView.setText(Double.toString(calcSum) + " " + operatorSymbol + " ");
                         } else {
-                            calcSum = functions.calculate(displayView.getText().toString(), operator, value1, value2);
-                            displayView.setText("");
-                            if (functions.isDecimal(calcSum)) {
-                                histView.setText(Double.toString(calcSum) + " " + operatorSymbol + " ");
-                            } else {
-                                histView.setText(Integer.toString((int) calcSum) + " " + operatorSymbol + " ");
-                            }
-                            value1 = calcSum;
-                            operator = operatorText;
+                            histView.setText(Integer.toString((int) calcSum) + " " + operatorSymbol + " ");
                         }
+                        value1 = calcSum;
+                        operator = operatorText;
                     }
                 }
             }
@@ -247,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                                 displayView.setText("NaN");
                             }
                             else {
-                                if (functions.isDecimal(Double.parseDouble(displayView.getText().toString())) || functions.isDecimal(value1)) {
+                                if (functions.isDecimal(Double.parseDouble(displayView.getText().toString()))) {
                                     displayView.setText(Double.toString(value1));
                                 } else {
                                     displayView.setText(Integer.toString((int) value1));

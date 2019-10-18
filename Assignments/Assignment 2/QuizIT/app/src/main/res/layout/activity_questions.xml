@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Questions" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:textAlignment="gravity"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="-52dp"
+        tools:layout_editor_absoluteY="-570dp">
+
+        <TextView
+            android:id="@+id/defView"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_android_black_24dp"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:textAllCaps="true"
+            android:textColor="#070707"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/Choices"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintHeight_max="wrap"
+        app:layout_constraintHeight_min="wrap"
+        app:layout_constraintHeight_percent="50">
+
+        <TableRow
+            android:id="@+id/AandB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnA"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:paddingBottom="50dp" />
+
+            <Button
+                android:id="@+id/btnB"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:paddingBottom="50dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/CandD"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="clip_horizontal"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnC"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:paddingBottom="50dp" />
+
+            <Button
+                android:id="@+id/btnD"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:paddingBottom="50dp" />
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
