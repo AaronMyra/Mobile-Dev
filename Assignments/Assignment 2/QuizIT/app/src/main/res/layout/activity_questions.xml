@@ -10,11 +10,54 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#540CA6EE"
         android:orientation="vertical"
         android:textAlignment="gravity"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="-52dp"
-        tools:layout_editor_absoluteY="-570dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:id="@+id/InfoRow"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/nameTextViewQues"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:width="80dp"
+                android:gravity="center"
+                android:lines="1"
+                android:maxWidth="40dp"
+                android:minWidth="40dp"
+                android:textAlignment="gravity"
+                android:textColor="#0C0C0C"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/currScoreTextView"
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textAlignment="textEnd"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalScoreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/maxScoreTxt"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/defView"
@@ -39,8 +82,6 @@
         android:textAlignment="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintHeight_max="wrap"
-        app:layout_constraintHeight_min="wrap"
         app:layout_constraintHeight_percent="50">
 
         <TableRow
@@ -52,58 +93,94 @@
 
             <Button
                 android:id="@+id/btnA"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="15dp"
-                android:paddingLeft="80dp"
-                android:paddingRight="80dp"
-                android:paddingBottom="50dp" />
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:width="150dp"
+                android:background="@drawable/ic_android_btnblack_24dp"
+                android:backgroundTintMode="add"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="150dp"
+                android:minWidth="150dp" />
 
             <Button
                 android:id="@+id/btnB"
-                style="@android:style/Widget.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
-                android:paddingLeft="80dp"
-                android:paddingRight="80dp"
-                android:paddingBottom="50dp" />
+                android:layout_marginBottom="10dp"
+                android:width="150dp"
+                android:background="@drawable/ic_android_btnblack_24dp"
+                android:backgroundTintMode="add"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="150dp"
+                android:minWidth="150dp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/CandD"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="clip_horizontal"
             android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/btnC"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:paddingLeft="80dp"
-                android:paddingRight="80dp"
-                android:paddingBottom="50dp" />
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:width="150dp"
+                android:background="@drawable/ic_android_btnblack_24dp"
+                android:backgroundTintMode="add"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="150dp"
+                android:minWidth="150dp" />
 
             <Button
                 android:id="@+id/btnD"
-                style="@android:style/Widget.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:width="150dp"
+                android:background="@drawable/ic_android_btnblack_24dp"
+                android:backgroundTintMode="add"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxWidth="150dp"
+                android:minWidth="150dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/nextQuesRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/nextQuesBtn"
+                style="@android:style/Widget.Button.Inset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="80dp"
-                android:paddingRight="80dp"
-                android:paddingBottom="50dp" />
+                android:gravity="center"
+                android:text="@string/nextQuesText"
+                android:visibility="invisible" />
         </TableRow>
 
     </TableLayout>
