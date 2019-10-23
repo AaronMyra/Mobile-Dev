@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateQuiz">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/quesTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="serif-monospace"
+            android:text="@string/ques1_txt"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#030303"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/warnMsgTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/defWarnMsgTxt"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/defEnterTextView"
+            android:layout_width="363dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="25dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            tools:text="@string/defEnterTitle" />
+
+        <EditText
+            android:id="@+id/defEnterEditText"
+            android:layout_width="363dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="25dp"
+            android:ems="10"
+            android:hint="@string/defHint"
+            android:inputType="textPersonName"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/warnMsgTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/termWarnMsgTxt"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/termEnterTextView"
+            android:layout_width="363dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            tools:text="@string/termEnterTitle" />
+
+        <EditText
+            android:id="@+id/termEnterEditText"
+            android:layout_width="363dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="25dp"
+            android:ems="10"
+            android:hint="@string/termHint"
+            android:inputType="textPersonName"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/nxtQuestEntButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/nextQuesText" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

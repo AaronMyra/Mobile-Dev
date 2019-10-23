@@ -45,13 +45,24 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="11" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundImage">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="110" />
+                                                <entry key="scalingPercent" value="64" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -61,6 +72,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="foregroundImage" value="L:\Second Year\MOBI 3002\Mobile-Dev\Assignments\Assignment 2\QuizIT\app\src\main\scoreTitle.png" />
                                       <entry key="outputName" value="ic_launcherbcnvc" />
                                     </map>
                                   </option>

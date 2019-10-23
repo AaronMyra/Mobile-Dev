@@ -1,14 +1,16 @@
 package com.example.quizit;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,8 +25,17 @@ public class Questions extends AppCompatActivity {
     private Button btnA, btnB, btnC, btnD, nextQues;
     private TextView defView, nameTVQ, scoreTV;
     private ArrayList<Button> btns = new ArrayList<>();
-    int randNum;
-    Quiz quiz = new Quiz();
+    private int randNum;
+    private Quiz quiz = new Quiz();
+    private int score = 0;
+
+    public int getScore(){
+        return score;
+    }
+
+    public void incrementScore(int score) {
+        this.score += score;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +142,7 @@ public class Questions extends AppCompatActivity {
             public void onClick(View v) {
                 if (quiz.getHashMap().get(defView.getText()) == btnD.getText()){
                     RightAnswer(btnD, quiz);
+
                 }
                 else{
                     WrongAnswer(btnD, btns.get(randNum), quiz);
@@ -148,7 +160,7 @@ public class Questions extends AppCompatActivity {
                     }
                 }
                 else{
-                    ViewScoreActivity();
+                    ViewScoreActivity(getScore());
                 }
             }
         });
@@ -180,7 +192,7 @@ public class Questions extends AppCompatActivity {
                 this.btnD.setText((String)quiz.getHashMap().get(quiz.getDefinitions().get(0)));
                 break;
             default:
-                displayToast("ERROR DISPLATING ANSWER");
+                displayToast("ERROR DISPLAYING ANSWER");
                 break;
         }
 
@@ -225,7 +237,8 @@ public class Questions extends AppCompatActivity {
         btn.setBackgroundResource(R.drawable.ic_android_btngreen_24dp);
         String num = scoreTV.getText().toString();
         scoreTV.setText(String.valueOf(Integer.parseInt(num) + 1));
-        displayToast("CORRECT");
+        incrementScore(1);
+        //displayToast("CORRECT");
         quiz.getDefinitions().remove(0);
         if (quiz.getDefinitions().size() != 0){
             nextQues.setVisibility(View.VISIBLE);
@@ -241,7 +254,9 @@ public class Questions extends AppCompatActivity {
         Resources res = getResources();
         rBtn.setBackgroundResource(R.drawable.ic_android_btnred_24dp);
         wBtn.setBackgroundResource(R.drawable.ic_android_btngreen_24dp);
-        displayToast("WRONG");
+        String num = scoreTV.getText().toString();
+        scoreTV.setText(String.valueOf(Integer.parseInt(num) + 1));
+        //displayToast("WRONG");
         quiz.getDefinitions().remove(0);
         if (quiz.getDefinitions().size() != 0){
             nextQues.setVisibility(View.VISIBLE);
@@ -259,14 +274,15 @@ public class Questions extends AppCompatActivity {
         }
     }
 
-    void ViewScoreActivity(){
+    void ViewScoreActivity(int score){
         Intent newIntent = new Intent(Questions.this, ScoreScreen.class);
         Bundle bundle = new Bundle();
         bundle.putString("name", nameTVQ.getText().toString());
-        bundle.putString("score", scoreTV.getText().toString());
+        bundle.putString("score", Integer.toString(score));
         newIntent.putExtras(bundle);
         startActivity(newIntent);
 
     }
 
 }
+
