@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class Questions extends AppCompatActivity {
     private int randNum;
     private Quiz quiz = new Quiz();
     private int score = 0;
+    private String tag = "File IO";
 
     public int getScore(){
         return score;
@@ -83,12 +85,18 @@ public class Questions extends AppCompatActivity {
                 }
                 inStream.close();
             }
+            catch (IOException e){
+                Log.e(tag, "There was an error when reading the file");
+            }
             catch(Exception e){
-                displayToast("Unable to read file");
+                Log.e(tag, "There was an error when reading the file");
             }
         }
         catch (IOException e) {
-            displayToast("Unable to load file");
+            Log.e(tag, "An error occurred opening the file");
+        }
+        catch (Exception e){
+            Log.e(tag, "An error occurred opening the file");
         }
 
 
@@ -104,19 +112,21 @@ public class Questions extends AppCompatActivity {
         btnA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (quiz.getHashMap().get(defView.getText()) == btnA.getText()){
+                if (CheckAnswer(btnA, defView, quiz)) {
                     RightAnswer(btnA, quiz);
                 }
                 else{
                     WrongAnswer(btnA, btns.get(randNum), quiz);
                 }
+
+
             }
         });
 
         btnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (quiz.getHashMap().get(defView.getText()) == btnB.getText()){
+                if (CheckAnswer(btnB, defView, quiz)) {
                     RightAnswer(btnB, quiz);
                 }
                 else{
@@ -128,7 +138,7 @@ public class Questions extends AppCompatActivity {
         btnC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (quiz.getHashMap().get(defView.getText()) == btnC.getText()){
+                if (CheckAnswer(btnC, defView, quiz)) {
                     RightAnswer(btnC, quiz);
                 }
                 else{
@@ -140,7 +150,7 @@ public class Questions extends AppCompatActivity {
         btnD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (quiz.getHashMap().get(defView.getText()) == btnD.getText()){
+                if (CheckAnswer(btnD, defView, quiz)) {
                     RightAnswer(btnD, quiz);
 
                 }
@@ -171,9 +181,11 @@ public class Questions extends AppCompatActivity {
 
     void setQandA(){
         nextQues.setVisibility(View.INVISIBLE);
+
         //Set the def text
         this.randNum = new Random().nextInt(4);
         this.defView.setText((String) quiz.getDefinitions().get(0));
+
         // Set random button as right answer
         for (int i = 0; i <this.btns.size() ; i++) {
             btns.get(i).setText("");
@@ -223,8 +235,8 @@ public class Questions extends AppCompatActivity {
         toast.show();
     }
 
-    boolean CheckAnswer(Button btn, TextView defView, HashMap hashMap){
-        if (defView.getText() == hashMap.get(btn.getText())){
+    boolean CheckAnswer(Button btn, TextView defView, Quiz quiz){
+        if (quiz.getHashMap().get(defView.getText()) == btn.getText()){
             return true;
         }
         else {
