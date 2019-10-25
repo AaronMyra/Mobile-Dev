@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -56,7 +58,7 @@ public class Questions extends AppCompatActivity {
         btns.add(btnD);
 
         //Text Views
-        defView = (TextView) findViewById(R.id.defView);
+        defView = findViewById(R.id.defView);
         scoreTV = findViewById(R.id.currScoreTextView);
         nameTVQ = findViewById(R.id.nameTextViewQues);
 
@@ -72,7 +74,17 @@ public class Questions extends AppCompatActivity {
 
         InputStream inStream = null;
         try {
-            inStream = getAssets().open("Test.txt");
+            if (getIntent().getExtras().getString("filePath")!= null){
+                File file = new File(getIntent().getExtras().getString("filePath"));
+                if (file.exists()){
+                    Log.i("File", "File Exists");
+                }
+                inStream = new FileInputStream(file);
+
+            }
+            else {
+                inStream = getAssets().open("Test.txt");
+            }
             InputStreamReader inputStreamReader = new InputStreamReader(inStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String result;
@@ -86,17 +98,17 @@ public class Questions extends AppCompatActivity {
                 inStream.close();
             }
             catch (IOException e){
-                Log.e(tag, "There was an error when reading the file");
+                Log.e(tag, "Error when reading the file: " + e.getMessage());
             }
             catch(Exception e){
-                Log.e(tag, "There was an error when reading the file");
+                Log.e(tag, "Error when reading the file: " + e.getMessage());
             }
         }
         catch (IOException e) {
-            Log.e(tag, "An error occurred opening the file");
+            Log.e(tag, "Error occurred opening the file: " + e.getMessage());
         }
         catch (Exception e){
-            Log.e(tag, "An error occurred opening the file");
+            Log.e(tag, "Error occurred opening the file: " + e.getMessage());
         }
 
 

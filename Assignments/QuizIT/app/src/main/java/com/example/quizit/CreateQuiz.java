@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,9 +41,25 @@ public class CreateQuiz extends AppCompatActivity {
         warnMsg1 = findViewById(R.id.warnMsgTextView);
         warnMsg2 = findViewById(R.id.warnMsgTextView2);
         questions = new ArrayList<>();
-        File file = new File("Answers.txt");
+        final File file = new File(getApplicationContext().getFilesDir().getPath().toString() + "Answers.txt");
 
-        for (int i = 1; i < 11; i++) {
+        if (!file.exists()){
+            try{
+                file.createNewFile();
+            }
+            catch (IOException e){
+                Log.e("File", "error creating file: " + e.getMessage());
+            }
+            catch (Exception e){
+                Log.e("File", "error creating file: " + e.getMessage());
+            }
+
+        }
+        else{
+            ClearFile(file);
+        }
+
+        for (int i = 1; i < 5; i++) {
             this.questions.add("Question " + Integer.toString(i));
         }
 
@@ -57,7 +74,7 @@ public class CreateQuiz extends AppCompatActivity {
                     if (!termEntET.getText().toString().isEmpty()  && !defEntET.getText().toString().isEmpty()){
                         warnMsg1.setVisibility(View.INVISIBLE);
                         warnMsg2.setVisibility(View.INVISIBLE);
-                        WriteToFile(defEntET, termEntET);
+                        WriteToFile(defEntET, termEntET, file);
                         nxtQuesEntBtn.setText("Save Quiz");
                         questions.remove(0);
                         questEntTV.setText("Complete");
@@ -75,7 +92,7 @@ public class CreateQuiz extends AppCompatActivity {
                     if (!termEntET.getText().toString().isEmpty()  && !defEntET.getText().toString().isEmpty()){
                         warnMsg1.setVisibility(View.INVISIBLE);
                         warnMsg2.setVisibility(View.INVISIBLE);
-                        WriteToFile(defEntET, termEntET);
+                        WriteToFile(defEntET, termEntET, file);
                         questions.remove(0);
                         questEntTV.setText(questions.get(0));
                         defEntET.setText("");
@@ -88,8 +105,8 @@ public class CreateQuiz extends AppCompatActivity {
                 }
                 else {
                     if (termEntET.getText().toString() != "" && defEntET.getText().toString() != ""){
-                        WriteToFile(defEntET, termEntET);
                         Intent intent = new Intent(CreateQuiz.this, MainActivity.class);
+                        intent.putExtra("filePath", file.getAbsolutePath());
                         startActivity(intent);
                     }
                     else{
@@ -101,24 +118,37 @@ public class CreateQuiz extends AppCompatActivity {
         });
     }
 
-    void WriteToFile(EditText defEntET, EditText termEntET){
+    void ClearFile(File file){
         String output = "";
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(output.getBytes());
+            fileOutputStream.close();
+        }
+        catch(IOException e){
+            Log.e("File IO", "Unable to clear file: " + e.getMessage());
+        }
+        catch (Exception e){
+            Log.e("File IO", "Unable to clear file: " + e.getMessage());
+        }
+    }
 
+    void WriteToFile(EditText defEntET, EditText termEntET, File file){
+        String output = "";
         try{
-            FileOutputStream outputStream = openFileOutput("Answers.txt", Context.MODE_PRIVATE);
+            FileOutputStream outputStream = new FileOutputStream(file, true);
             output += defEntET.getText().toString();
             output += ",";
             output += termEntET.getText().toString();
             output += "\n";
             outputStream.write(output.getBytes());
-            outputStream.flush();
             outputStream.close();
         }
         catch (IOException ioe){
-            displayToast(ioe.getMessage());
+            Log.e("File output", "Error writing to file");
         }
         catch (Exception e){
-            displayToast(e.getMessage());
+            Log.e("File Output", "Error writing to file");
         }
     }
 

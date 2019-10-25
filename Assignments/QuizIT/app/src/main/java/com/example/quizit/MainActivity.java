@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, Questions.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("name", nameET.getText().toString());
+                        if (getIntent().getStringExtra("filePath") != null){
+                            intent.putExtra("filePath", getIntent().getStringExtra("filePath"));
+                        }
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }
