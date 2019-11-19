@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#540CA6EE"
     tools:context=".CreateQuiz">
 
     <LinearLayout
@@ -50,8 +51,8 @@
             android:layout_marginStart="25dp"
             android:ems="10"
             android:hint="@string/defHint"
-            android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/warnMsgTextView2"
@@ -79,11 +80,12 @@
             android:layout_marginStart="25dp"
             android:ems="10"
             android:hint="@string/termHint"
-            android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/nxtQuestEntButton"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"

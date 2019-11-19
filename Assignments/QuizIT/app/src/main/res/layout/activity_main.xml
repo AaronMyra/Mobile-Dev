@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#540CA6EE"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -43,8 +44,9 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="163dp"
-            android:contentDescription="@string/Title_Image" />
+            android:layout_height="197dp"
+            android:contentDescription="@string/Title_Image"
+            app:srcCompat="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/errTextView"
