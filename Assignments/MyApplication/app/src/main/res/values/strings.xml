@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="nameTxt">Name:</string>
+    <string name="gameTxt">Game:</string>
+    <string name="descriptionTxt">Description</string>
+    <string name="imageTxt" >Image</string>
+    <string name="characterImgTxt">Character</string>
+    <string-array name="character_names">
+        <item>Yoshi</item>
+        <item>Link</item>
+        <item>Agent 47</item>
+        <item>Luigi</item>
+        <item>Doomguy</item>
+        <item>Handsome Jack</item>
+        <item>Geralt of Rivia</item>
+        <item>Big Daddy</item>
+        <item>Commander Shepard</item>
+        <item>Ganondorf</item>
+    </string-array>
+    <string-array name="character_descriptions">
+        <item>Yoshi</item>
+        <item>Link</item>
+        <item>Agent 47</item>
+        <item>Luigi</item>
+        <item>Doomguy</item>
+        <item>Handsome Jack</item>
+        <item>Geralt of Rivia</item>
+        <item>Big Daddy</item>
+        <item>Commander Shepard</item>
+        <item>Ganondorf</item>
+    </string-array>
+    <string-array name="character_games">
+        <item>Super Mario World</item>
+        <item>Legend of Zelda</item>
+        <item>Hitman</item>
+        <item>Super Mario Bros.</item>
+        <item>Doom</item>
+        <item>Borderlands 2</item>
+        <item>The Witcher</item>
+        <item>Bioshock</item>
+        <item>Mass Effect</item>
+        <item>Legend of Zelda</item>
+    </string-array>
+    <string-array name="image_urls">
+        <item>https://nintendo.fandom.com/wiki/Yoshi_(series)</item>
+        <item>https://hero.fandom.com/wiki/Link_(The_Legend_of_Zelda)</item>
+        <item>https://hitman.fandom.com/wiki/Agent_47</item>
+        <item>https://en.wikipedia.org/wiki/Luigi</item>
+        <item>https://en.wikipedia.org/wiki/Doomguy</item>
+        <item>https://en.wikipedia.org/wiki/Handsome_Jack</item>
+        <item>https://en.wikipedia.org/wiki/Geralt_of_Rivia</item>
+        <item>https://en.wikipedia.org/wiki/Big_Daddy_(BioShock)</item>
+        <item>http://www.fanpop.com/clubs/mass-effect/images/38099613/title/commander-shepard-photo</item>
+        <item>https://en.wikipedia.org/wiki/Ganon</item>
+    </string-array></resources>

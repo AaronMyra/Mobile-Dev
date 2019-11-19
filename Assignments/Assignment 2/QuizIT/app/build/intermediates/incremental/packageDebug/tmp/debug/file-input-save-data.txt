@@ -1,0 +1,19 @@
+#Internal package file, do not edit.
+#Wed Oct 23 18:03:42 ADT 2019
+1.base=L\:\\Second Year\\MOBI 3002\\Mobile-Dev\\Assignments\\Assignment 2\\QuizIT\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+2.path=classes.dex
+0.baseType=DIRECTORY
+3.baseType=DIRECTORY
+2.base=L\:\\Second Year\\MOBI 3002\\Mobile-Dev\\Assignments\\Assignment 2\\QuizIT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+3.set=ASSET
+2.set=DEX
+1.baseType=DIRECTORY
+3.path=Test.txt
+count=4
+1.set=DEX
+0.path=Answers.txt
+3.base=L\:\\Second Year\\MOBI 3002\\Mobile-Dev\\Assignments\\Assignment 2\\QuizIT\\app\\build\\intermediates\\merged_assets\\debug\\out
+0.set=ASSET
+0.base=L\:\\Second Year\\MOBI 3002\\Mobile-Dev\\Assignments\\Assignment 2\\QuizIT\\app\\build\\intermediates\\merged_assets\\debug\\out
+2.baseType=DIRECTORY
+1.path=classes.dex

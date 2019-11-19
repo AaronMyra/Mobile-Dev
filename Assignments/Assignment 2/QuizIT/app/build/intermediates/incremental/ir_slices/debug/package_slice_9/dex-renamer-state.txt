@@ -1,0 +1,4 @@
+#Wed Oct 23 17:10:36 ADT 2019
+base.0=E\:\\Second Year\\MOBI 3002\\Mobile-Dev\\Assignments\\Assignment 2\\QuizIT\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
+path.0=classes.dex
+renamed.0=classes.dex

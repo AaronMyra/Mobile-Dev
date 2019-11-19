@@ -1,0 +1,132 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="15dp">
+
+        <ImageView
+            android:id="@+id/imageCardImageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginBottom="25dp"
+            app:srcCompat="@drawable/link" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/staticNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/nameTxt"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Link"
+                android:textAllCaps="false"
+                android:textColor="#505050"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lineTextView"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/staticGameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameTxt"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/gameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Legend Of Zelda"
+                android:textColor="#505050"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lineTextView2"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/staticDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/descriptionTxt"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/descriptionCardTextView"
+                android:layout_width="match_parent"
+                android:layout_height="265dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper, nibh vel ornare efficitur, ipsum nisi commodo est, nec pulvinar tellus massa dignissim nibh. Proin quam orci, mattis non ultricies non, commodo ut justo. Sed condimentum, libero quis mollis iaculis, justo lorem congue tellus, vitae fringilla dui nulla eu justo. Aliquam vitae neque eu nisl eleifend maximus quis nec urna. Sed in leo mattis, facilisis nulla non, dignissim odio. Ut ex tellus, lacinia ac urna in, cursus varius mauris. Nulla faucibus nisl sit amet tempor feugiat. Sed lacinia imperdiet congue. Nunc dapibus lorem eget pulvinar mattis. Nam cursus felis ac enim varius ornare."
+                android:textColor="#000000" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
