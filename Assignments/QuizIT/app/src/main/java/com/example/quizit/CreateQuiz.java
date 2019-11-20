@@ -23,9 +23,9 @@ public class CreateQuiz extends AppCompatActivity {
 
     private TextView questEntTV, defEntTV, termEntTV, warnMsg1, warnMsg2;
     private EditText defEntET, termEntET;
-    private Button nxtQuesEntBtn;
+    private Button nxtQuesEntBtn, createQuizBtn;
     private ArrayList<String> questions;
-    private File file;
+    File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +40,9 @@ public class CreateQuiz extends AppCompatActivity {
         nxtQuesEntBtn = findViewById(R.id.nxtQuestEntButton);
         warnMsg1 = findViewById(R.id.warnMsgTextView);
         warnMsg2 = findViewById(R.id.warnMsgTextView2);
+        createQuizBtn = findViewById(R.id.createQuizBtn);
         questions = new ArrayList<>();
-        final File file = new File(getApplicationContext().getFilesDir().getPath().toString() + "Answers.txt");
-
-        if (!file.exists()){
-            try{
-                file.createNewFile();
-            }
-            catch (IOException e){
-                Log.e("File", "error creating file: " + e.getMessage());
-            }
-            catch (Exception e){
-                Log.e("File", "error creating file: " + e.getMessage());
-            }
-
-        }
-        else{
-            ClearFile(file);
-        }
+        //File file;
 
         for (int i = 1; i < 5; i++) {
             this.questions.add("Question " + Integer.toString(i));
@@ -65,54 +50,99 @@ public class CreateQuiz extends AppCompatActivity {
 
         questEntTV.setText(questions.get(0));
 
+        //Initial Changes
+        defEntTV.setText("Enter quiz Name");
+        warnMsg1.setText("Must enter quiz name");
+        questEntTV.setText("Quiz Creator");
+        defEntET.setHint("Quiz Name");
+        termEntET.setVisibility(View.INVISIBLE);
+        termEntTV.setVisibility(View.INVISIBLE);
+        nxtQuesEntBtn.setVisibility(View.INVISIBLE);
+        nxtQuesEntBtn.setEnabled(false);
 
+        createQuizBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (defEntET.getText().toString() != "") {
+
+                    defEntTV.setText("Definition");
+                    warnMsg1.setText("Must enter definition");
+                    termEntET.setVisibility(View.VISIBLE);
+                    termEntTV.setVisibility(View.VISIBLE);
+                    defEntET.setHint("Definition");
+                    nxtQuesEntBtn.setVisibility(View.VISIBLE);
+                    createQuizBtn.setVisibility(View.INVISIBLE);
+                    nxtQuesEntBtn.setEnabled(true);
+                    questEntTV.setText(questions.get(0));
+                    defEntET.setText("");
+
+                    file = new File(getApplicationContext().getFilesDir().getPath().toString() + "/" + defEntET.getText().toString());
+
+                    if (!file.exists()){
+                        try{
+                            file.createNewFile();
+                        }
+                        catch (IOException e){
+                            Log.e("File", "error creating file: " + e.getMessage());
+                        }
+                        catch (Exception e){
+                            Log.e("File", "error creating file: " + e.getMessage());
+                        }
+                    }
+                    else{
+                        ClearFile(file);
+                    }
+                }
+            }
+        });
 
         nxtQuesEntBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questions.size() == 1){
-                    if (!termEntET.getText().toString().isEmpty()  && !defEntET.getText().toString().isEmpty()){
-                        warnMsg1.setVisibility(View.INVISIBLE);
-                        warnMsg2.setVisibility(View.INVISIBLE);
-                        WriteToFile(defEntET, termEntET, file);
-                        nxtQuesEntBtn.setText("Save Quiz");
-                        questions.remove(0);
-                        questEntTV.setText("Complete");
-                        defEntET.setText("");
-                        termEntET.setText("");
-                        defEntET.setEnabled(false);
-                        termEntET.setEnabled(false);
-                    }
-                    else{
-                        warnMsg1.setVisibility(View.VISIBLE);
-                        warnMsg2.setVisibility(View.VISIBLE);
+                if (defEntET.getText().toString() != "") {
+
+                    if (questions.size() == 1) {
+                        if (!termEntET.getText().toString().isEmpty() && !defEntET.getText().toString().isEmpty()) {
+                            warnMsg1.setVisibility(View.INVISIBLE);
+                            warnMsg2.setVisibility(View.INVISIBLE);
+                            WriteToFile(defEntET, termEntET, file);
+                            nxtQuesEntBtn.setText("Save Quiz");
+                            questions.remove(0);
+                            questEntTV.setText("Complete");
+                            defEntET.setText("");
+                            termEntET.setText("");
+                            defEntET.setEnabled(false);
+                            termEntET.setEnabled(false);
+                        } else {
+                            warnMsg1.setVisibility(View.VISIBLE);
+                            warnMsg2.setVisibility(View.VISIBLE);
+                        }
+                    } else if (questions.size() > 1) {
+                        if (!termEntET.getText().toString().isEmpty() && !defEntET.getText().toString().isEmpty()) {
+                            warnMsg1.setVisibility(View.INVISIBLE);
+                            warnMsg2.setVisibility(View.INVISIBLE);
+                            WriteToFile(defEntET, termEntET, file);
+                            questions.remove(0);
+                            questEntTV.setText(questions.get(0));
+                            defEntET.setText("");
+                            termEntET.setText("");
+                        } else {
+                            warnMsg1.setVisibility(View.VISIBLE);
+                            warnMsg2.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        if (termEntET.getText().toString() != "" && defEntET.getText().toString() != "") {
+                            Intent intent = new Intent(CreateQuiz.this, MainActivity.class);
+                            intent.putExtra("filePath", file.getAbsolutePath());
+                            startActivity(intent);
+                        } else {
+                            warnMsg1.setVisibility(View.VISIBLE);
+                            warnMsg2.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
-                else if (questions.size() > 1){
-                    if (!termEntET.getText().toString().isEmpty()  && !defEntET.getText().toString().isEmpty()){
-                        warnMsg1.setVisibility(View.INVISIBLE);
-                        warnMsg2.setVisibility(View.INVISIBLE);
-                        WriteToFile(defEntET, termEntET, file);
-                        questions.remove(0);
-                        questEntTV.setText(questions.get(0));
-                        defEntET.setText("");
-                        termEntET.setText("");
-                    }
-                    else{
-                        warnMsg1.setVisibility(View.VISIBLE);
-                        warnMsg2.setVisibility(View.VISIBLE);
-                    }
-                }
-                else {
-                    if (termEntET.getText().toString() != "" && defEntET.getText().toString() != ""){
-                        Intent intent = new Intent(CreateQuiz.this, MainActivity.class);
-                        intent.putExtra("filePath", file.getAbsolutePath());
-                        startActivity(intent);
-                    }
-                    else{
-                        warnMsg1.setVisibility(View.VISIBLE);
-                        warnMsg2.setVisibility(View.VISIBLE);
-                    }
+                else{
+                    warnMsg1.setVisibility(View.VISIBLE);
                 }
             }
         });

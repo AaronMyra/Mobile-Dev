@@ -29,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
         nameTV = findViewById(R.id.NameTextView);
         createQuizBtn = findViewById(R.id.createQuizBtn);
 
+        //Start quiz button
         startQuizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // Validates users name (not empty)
                 if (nameET.getText().length() != 0) {
                     try {
                         Intent intent = new Intent(MainActivity.this, Questions.class);
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         if (getIntent().getStringExtra("filePath") != null){
                             intent.putExtra("filePath", getIntent().getStringExtra("filePath"));
                         }
+                        //Starts Question intent
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Not Implemented
         createQuizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -40,7 +40,15 @@ public class ItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        getItems();
+        // Method 1
+//        Character.ITEMS.clear();
+//        Character.ITEM_MAP.clear();
+//        getItems();
+
+        // Method 2
+        if (Character.ITEMS.size() == 0){
+            getItems();
+        }
 
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
