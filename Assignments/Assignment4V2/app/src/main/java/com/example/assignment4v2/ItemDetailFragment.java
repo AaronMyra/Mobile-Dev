@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class ItemDetailFragment extends Fragment {
     private TextView nameTV, gameTV, desTV;
     private ImageView characterImage;
     private FloatingActionButton fab;
+    private Animation imageAnim;
 
     public ItemDetailFragment() {
     }
@@ -59,6 +62,14 @@ public class ItemDetailFragment extends Fragment {
         gameTV.setText(mItem.getGame());
         desTV.setText(mItem.getDescription());
         characterImage.setImageDrawable(mItem.getImageDrawable());
+
+        if (Integer.parseInt(mItem.getId()) > 4){
+            imageAnim = AnimationUtils.loadAnimation(getContext(), R.anim.image_animation);
+        }
+        else {
+            imageAnim = AnimationUtils.loadAnimation(getContext(), R.anim.image_animation_2);
+        }
+        characterImage.startAnimation(imageAnim);
 
         return rootView;
     }
