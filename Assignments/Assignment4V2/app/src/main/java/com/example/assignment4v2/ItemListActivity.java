@@ -44,6 +44,10 @@ public class ItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
+        //Get shared Prefs
+        visibleChars = getPrefCharacters("visibleChars", this);
+
+        //Reset the recycler view and characters
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +56,7 @@ public class ItemListActivity extends AppCompatActivity {
                     visibleChars[i] = 1;
                 }
                 Toast.makeText(getApplicationContext(), "Characters Reset", Toast.LENGTH_LONG).show();
+                savePrefCharacters(visibleChars, "visibleChars", getApplicationContext());
                 startActivity(getIntent());
             }
         });
@@ -60,24 +65,19 @@ public class ItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        //Get shared Prefs
-        visibleChars = getPrefCharacters("visibleChars", this);
-
         System.out.println("HERE");
         for (int i = 0; i < visibleChars.length; i++) {
             System.out.println(visibleChars[i]);
         }
         System.out.println("END");
 
-        // Method 1
+        // Removes item from list
+        images.clear();
         Character.ITEMS.clear();
         Character.ITEM_MAP.clear();
-        getItems();
 
-//        // Method 2
-//        if (Character.ITEMS.size() == 0){
-//            getItems();
-//        }
+        //Get characters to populates the recycler view
+        getItems();
 
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
@@ -98,6 +98,8 @@ public class ItemListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Character item = (Character) view.getTag();
+
+                //Sets visibility flag
                 visibleChars[Integer.parseInt(item.getId())] = 0;
                 savePrefCharacters(visibleChars, "visibleChars", view.getContext());
                 if (mTwoPane) {
@@ -137,6 +139,8 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
+
+            //Set character specific field in the recycler view list item
             holder.nameTextView.setText(mValues.get(position).getName());
             holder.charImageView.setImageDrawable(mValues.get(position).getImageDrawable());
             holder.itemView.setTag(mValues.get(position));
@@ -163,6 +167,8 @@ public class ItemListActivity extends AppCompatActivity {
 
     public void getItems(){
         Character character;
+
+        // Adds drawable assets to list
         images.add(getDrawable(R.drawable.yoshi));
         images.add(getDrawable(R.drawable.link));
         images.add(getDrawable(R.drawable.agent_47));
@@ -187,6 +193,7 @@ public class ItemListActivity extends AppCompatActivity {
         }
     }
 
+    // Save the character visibility array to shared prefs
     public static boolean savePrefCharacters(int[] array, String arrayName, Context mContext) {
         SharedPreferences prefs = mContext.getSharedPreferences("visibleChars", 0);
         SharedPreferences.Editor editor = prefs.edit();
@@ -196,6 +203,7 @@ public class ItemListActivity extends AppCompatActivity {
         return editor.commit();
     }
 
+    // Gets the character visibility array to shared prefs
     public static int[] getPrefCharacters(String arrayName, Context mContext) {
         SharedPreferences prefs = mContext.getSharedPreferences("visibleChars", 0);
         int size = prefs.getInt(arrayName + "_sizeOf", 10);

@@ -40,6 +40,7 @@ public class ItemDetailFragment extends Fragment {
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             mItem = Character.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
+            //Adds character name to upper app bar
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
@@ -58,17 +59,22 @@ public class ItemDetailFragment extends Fragment {
         gameTV = rootView.findViewById(R.id.gameTextView);
         characterImage = rootView.findViewById(R.id.characterImageView);
 
+
+        // Set item detail fields with character properties
         nameTV.setText(mItem.getName());
         gameTV.setText(mItem.getGame());
         desTV.setText(mItem.getDescription());
         characterImage.setImageDrawable(mItem.getImageDrawable());
 
-        if (Integer.parseInt(mItem.getId()) > 4){
+        // Different animation depending on character ID
+        if (Integer.parseInt(mItem.getId()) < 4){
             imageAnim = AnimationUtils.loadAnimation(getContext(), R.anim.image_animation);
         }
         else {
             imageAnim = AnimationUtils.loadAnimation(getContext(), R.anim.image_animation_2);
         }
+
+        //Start animation
         characterImage.startAnimation(imageAnim);
 
         return rootView;

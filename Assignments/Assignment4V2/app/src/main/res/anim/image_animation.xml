@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
 
+<!--    Fade in and rotate 360 animation-->
+
+<!--    Fade in     -->
     <alpha
         android:duration="1500"
         android:fromAlpha="0.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="1.0" />
 
+<!--    Rotate      -->
     <rotate
-        android:duration="2000"
+        android:duration="1500"
         android:fromDegrees="0"
         android:pivotX="50%"
         android:pivotY="50%"

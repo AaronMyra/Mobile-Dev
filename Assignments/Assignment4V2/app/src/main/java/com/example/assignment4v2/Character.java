@@ -9,6 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/// Summary
+
+// Class for Character fields and methods
+
 public class Character {
 
 //    private boolean isVisible = true;
