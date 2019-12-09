@@ -24,11 +24,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        onUpgrade(db, 0, 1);
         String createTable = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL1 + " TEXT, " +
                 COL2 + " TEXT, " +
@@ -41,19 +41,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
-    }
-
-    public void populateTable(){
-        String titles[] = {"Back to the Future", "The Empire Strikes Back", "Raiders of the Lost Ark"};
-        String descriptions[] = {"Lorem Ipsm", "Lorem Ipsm", "Lorem Ipsm"};
-        String year[] = {"1985", "1980", "1981"};
-        String rating[] = {"5", "5", "5"};
-        for (int i = 0; i < 3; i++) {
-            addTableData(1, titles[i]);
-            addTableData(2, descriptions[i]);
-            addTableData(3, year[i]);
-            addTableData(4, rating[i]);
-        }
     }
 
     public boolean addTableData(int col, String data){
@@ -79,8 +66,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getData(){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
-        return db.rawQuery( query,null);
+        Cursor cursor = db.rawQuery( query,null);
+        return cursor;
     }
 }

@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,6 @@ public class ItemListActivity extends AppCompatActivity {
 
         //Initialize Database Helper
         mDatabaseHelper = new DatabaseHelper(this);
-        mDatabaseHelper.populateTable();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,6 +74,7 @@ public class ItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
+        populateTable();
         getMovies();
 
         View recyclerView = findViewById(R.id.item_list);
@@ -155,16 +156,33 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     public void getMovies(){
-        Movie movie;
-        Cursor data = mDatabaseHelper.getData();
-        while (data.moveToNext()){
-            String id = data.getString(0);
-            String title = data.getString(0);;
-            String description = data.getString(0);;
-            int year = Integer.parseInt(data.getString(0));
-            int rating = Integer.parseInt(data.getString(0));
-            movie = new Movie(id, title, description, year, rating);
-            movie.mapMovie(movie);
+        try {
+            Movie movie;
+            Cursor data = mDatabaseHelper.getData();
+            while (data.moveToNext()) {
+                String id = data.getString(0);
+                String title = data.getString(1);
+                String description = data.getString(2);
+                String year = data.getString(3);
+                String rating = data.getString(4);
+                movie = new Movie(id, title, description, Integer.parseInt(year), Integer.parseInt(rating));
+                movie.mapMovie(movie);
+            }
+        }catch (Exception e){
+            Log.e("Cursor", e.getMessage());
+        }
+    }
+
+    public void populateTable(){
+        String titles[] = {"Back to the Future", "The Empire Strikes Back", "Raiders of the Lost Ark"};
+        String descriptions[] = {"Lorem Ipsm", "Lorem Ipsm", "Lorem Ipsm"};
+        String year[] = {"1985", "1980", "1981"};
+        String rating[] = {"5", "5", "5"};
+        for (int i = 0; i < 3; i++) {
+            mDatabaseHelper.addTableData(1, titles[i]);
+            mDatabaseHelper.addTableData(2, descriptions[i]);
+            mDatabaseHelper.addTableData(3, year[i]);
+            mDatabaseHelper.addTableData(4, rating[i]);
         }
     }
 }
