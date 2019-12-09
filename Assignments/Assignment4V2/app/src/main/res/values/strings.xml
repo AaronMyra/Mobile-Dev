@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment 4 V2</string>
+    <string name="app_name">Assignment 3</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="nameTxt">Name:</string>
     <string name="gameTxt">Game:</string>
@@ -19,16 +19,16 @@
         <item>Ganondorf</item>
     </string-array>
     <string-array name="character_descriptions">
-        <item>Yoshi</item>
-        <item>Link</item>
-        <item>Agent 47</item>
-        <item>Luigi</item>
-        <item>Doomguy</item>
-        <item>Handsome Jack</item>
-        <item>Geralt of Rivia</item>
-        <item>Big Daddy</item>
-        <item>Commander Shepard</item>
-        <item>Ganondorf</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nulla, luctus at ipsum eu, viverra maximus nibh. Duis nec tincidunt est. Curabitur porttitor sed est a maximus. Fusce congue blandit tellus a ornare. Sed id turpis volutpat enim euismod commodo. Vivamus viverra tellus justo, a rutrum justo condimentum et. Nunc mollis ante ac felis lacinia, ac auctor tellus aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</item>
     </string-array>
     <string-array name="character_games">
         <item>Super Mario World</item>

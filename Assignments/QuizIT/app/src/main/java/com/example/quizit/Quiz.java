@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// Class for Quiz
 public class Quiz {
 
     private ArrayList<String> definitions;
@@ -16,6 +17,7 @@ public class Quiz {
         this.terms = new ArrayList<>();
     };
 
+    // Getters & Setters
     public Map<String, String> getHashMap() {
         return hashMap;
     }

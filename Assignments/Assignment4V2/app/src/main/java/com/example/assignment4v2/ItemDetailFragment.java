@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class ItemDetailFragment extends Fragment {
     private TextView nameTV, gameTV, desTV;
     private ImageView characterImage;
     private FloatingActionButton fab;
+    private Animation imageAnim;
 
     public ItemDetailFragment() {
     }
@@ -34,20 +37,15 @@ public class ItemDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        nameTV = getActivity().findViewById(R.id.nameTextView);
-        desTV = getActivity().findViewById(R.id.descriptionTextView);
-        gameTV = getActivity().findViewById(R.id.gameTextView);
-        characterImage = getActivity().findViewById(R.id.characterImageView);
-
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             mItem = Character.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
+            //Adds character name to upper app bar
             Activity activity = this.getActivity();
-            nameTV.setText(mItem.getName());
-            gameTV.setText(mItem.getGame());
-            desTV.setText(mItem.getDescription());
-            characterImage.setImageDrawable(mItem.getImageDrawable());
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            if (appBarLayout != null) {
+                appBarLayout.setTitle(mItem.getName());
+            }
         }
     }
 
@@ -55,6 +53,29 @@ public class ItemDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.item_detail, container, false);
+
+        nameTV = rootView.findViewById(R.id.nameTextView);
+        desTV = rootView.findViewById(R.id.descriptionTextView);
+        gameTV = rootView.findViewById(R.id.gameTextView);
+        characterImage = rootView.findViewById(R.id.characterImageView);
+
+
+        // Set item detail fields with character properties
+        nameTV.setText(mItem.getName());
+        gameTV.setText(mItem.getGame());
+        desTV.setText(mItem.getDescription());
+        characterImage.setImageDrawable(mItem.getImageDrawable());
+
+        // Different animation depending on character ID
+        if (Integer.parseInt(mItem.getId()) < 4){
+            imageAnim = AnimationUtils.loadAnimation(getContext(), R.anim.image_animation);
+        }
+        else {
+            imageAnim = AnimationUtils.loadAnimation(getContext(), R.anim.image_animation_2);
+        }
+
+        //Start animation
+        characterImage.startAnimation(imageAnim);
 
         return rootView;
     }

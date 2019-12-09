@@ -1,10 +1,20 @@
-Definition 1,Term 1
-Definition 2,Term 2
-Definition 3,Term 3
-Definition 4,Term 4
-Definition 5,Term 5
-Definition 6,Term 6
-Definition 7,Term 7
-Definition 8,Term 8
-Definition 9,Term 9
-Definition 10,Term 10
+This represents a single screen with a user interface,Activity
+The library where components such as Activity and AlertDialog are defined,App
+These are the essential building blocks of an Android application. Not all are actual entry points for the user and some depend on each other but each one exists as its own entity and plays a specific role,Application Components
+ach Android application is compiled and packaged in a single file that includes all of the application's code (.dex files)/resources/assets and manifest file. This may have any name but must use the .apk extension,Android application package file
+This locates an appropriate component to respond to the intent launches a new instance of the component if one is needed and passes it the Intent object,Android operating system
+In object-oriented programming (OOP) this is an un-named class declared entirely within the body of another class or interface. Often use for UI event handling,anonymous inner
+These are components that respond to system-wide broadcast announcements. Although these don't display a user interface they may create a status bar notification to alert the user when a broadcast event occurs. More commonly though they act as just a "gateway" to other components and are intended to do a very minimal amount of work,broadcast receiver
+This supplies structured access to data managed by the application,content provider
+This is a data structure that maps identifying values known as keys to associated values,hash table or hash map
+You can use these to start activities services and broadcast receivers,intent
+With these you simply describe the type of action you want to perform (and optionally the data upon which you’d like to perform the action) and allow the system to find a component on the device that can perform the action and start it,intent actions
+This is a bundle of information describing a desired action — including the data to be acted upon the category of component that should perform the action and other pertinent instructions,intent object
+A file describing the contents permissions and other attributes of an Android application package,manifest
+This includes tools developers use to create applications for Android OS based phones and other devices,SDK
+These are components that run in the background to perform long-running operations or to perform work for remote processes. These do not provide a user interface. Another component such as an activity can start one of these and let it run or bind to it in order to interact with it,service
+A unique aspect of the Android system design is that any application can do this to another application’s component. For example if you want the user to capture a photo with the device camera there's probably another application that does that and your application can use it instead of developing an activity to capture a photo yourself, start
+If there are multiple components that can perform an action described by an intent then this selects which one to use,Intent filter
+The library where components such as Random and List are defined,util
+The library where components such as OnClickListener are defined,view
+The library where components such as Button and TextView are defined,widget
