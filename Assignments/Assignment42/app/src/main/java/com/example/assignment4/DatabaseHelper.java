@@ -24,7 +24,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
-
     }
 
     @Override
@@ -32,35 +31,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL1 + " TEXT, " +
                 COL2 + " TEXT, " +
-                COL3 + " TEXT, " +
-                COL4 + " TEXT)";
+                COL3 + " INTEGER, " +
+                COL4 + " INTEGER)";
         db.execSQL(createTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE " + TABLE_NAME);
         onCreate(db);
     }
 
-    public boolean addTableData(int col, String data){
+    public boolean insertData(String title, String desc, Integer year, Integer rating){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        switch (col){
-            case 1:
-                contentValues.put(COL1, data);
-                break;
-            case 2:
-                contentValues.put(COL2, data);
-                break;
-            case 3:
-                contentValues.put(COL3, data);
-                break;
-            case 4:
-                contentValues.put(COL4, data);
-                break;
-        }
-        Log.d(TAG, "addData: Adding " + data + " to " + TABLE_NAME + " in column " + col);
+
+        contentValues.put(COL1, title);
+        contentValues.put(COL2, desc);
+        contentValues.put(COL3, year);
+        contentValues.put(COL4, rating);
+
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result == -1? false : true;
     }
@@ -70,5 +60,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery( query,null);
         return cursor;
+    }
+
+    public Integer deleteData(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, "ID = ?", new String[] {id});
     }
 }

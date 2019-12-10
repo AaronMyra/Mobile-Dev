@@ -74,7 +74,10 @@ public class ItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
+        deleteTableContents();
         populateTable();
+        Movie.ITEMS.clear();
+        Movie.ITEM_MAP.clear();
         getMovies();
 
         View recyclerView = findViewById(R.id.item_list);
@@ -131,8 +134,7 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).title);
-            holder.mContentView.setText(mValues.get(position).description);
+            holder.mListTextView.setText(mValues.get(position).title);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -144,13 +146,12 @@ public class ItemListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mIdView;
-            final TextView mContentView;
+            final TextView mListTextView;
 
             ViewHolder(View view) {
                 super(view);
-                mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mListTextView = (TextView) view.findViewById(R.id.listTextView);
+
             }
         }
     }
@@ -171,18 +172,33 @@ public class ItemListActivity extends AppCompatActivity {
         }catch (Exception e){
             Log.e("Cursor", e.getMessage());
         }
+
+        for (int i = 0; i < Movie.ITEMS.size(); i++) {
+            System.out.println(Movie.ITEMS.get(i).id);
+            System.out.println(Movie.ITEMS.get(i).description);
+            System.out.println(Movie.ITEMS.get(i).title);
+            System.out.println(Movie.ITEMS.get(i).description);
+            System.out.println(Movie.ITEMS.get(i).year);
+            System.out.println(Movie.ITEMS.get(i).rating);
+        }
     }
 
     public void populateTable(){
         String titles[] = {"Back to the Future", "The Empire Strikes Back", "Raiders of the Lost Ark"};
         String descriptions[] = {"Lorem Ipsm", "Lorem Ipsm", "Lorem Ipsm"};
-        String year[] = {"1985", "1980", "1981"};
-        String rating[] = {"5", "5", "5"};
+        Integer year[] = {1985, 1980, 1981};
+        Integer rating[] = {5, 5, 5};
         for (int i = 0; i < 3; i++) {
-            mDatabaseHelper.addTableData(1, titles[i]);
-            mDatabaseHelper.addTableData(2, descriptions[i]);
-            mDatabaseHelper.addTableData(3, year[i]);
-            mDatabaseHelper.addTableData(4, rating[i]);
+            if (!mDatabaseHelper.insertData(titles[i],  descriptions[i], year[i],  rating[i])){
+                Log.e("Database INSERT", "ERROR INSERTING DATA");
+            }
+        }
+    }
+
+    public void deleteTableContents(){
+        Cursor data = mDatabaseHelper.getData();
+        while (data.moveToNext()) {
+            mDatabaseHelper.deleteData(data.getString(0));
         }
     }
 }
