@@ -45,11 +45,6 @@ public class CreateMovieEntry extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), ItemListActivity.class);
                     startActivity(intent);
                 }
-                else{
-                    Toast.makeText(getApplicationContext(), "Unable to add record to database", Toast.LENGTH_LONG).show();
-                }
-
-
             }
         });
 
@@ -58,15 +53,20 @@ public class CreateMovieEntry extends AppCompatActivity {
     public boolean ValidateData(String title, String desc, String year, String imageURL, String videoCode){
         try {
 
-            if (title.length() < 3) {
+            if (title.length() == 0) {
+                Toast.makeText(getApplicationContext(), "Must enter movie title", Toast.LENGTH_LONG).show();
                 return false;
-            } else if (desc.length() < 3) {
+            } else if (desc.length() == 0) {
+                Toast.makeText(getApplicationContext(), "Must enter description", Toast.LENGTH_LONG).show();
                 return false;
-            } else if (imageURL.length() < 3) {
+            } else if (imageURL.length() == 0) {
+                Toast.makeText(getApplicationContext(), "Must enter Image URL", Toast.LENGTH_LONG).show();
                 return false;
-            } else if (videoCode.length() < 3) {
+            } else if (videoCode.length() == 0) {
+                Toast.makeText(getApplicationContext(), "Unable to add record to database", Toast.LENGTH_LONG).show();
                 return false;
             } else if (Integer.parseInt(year) < 0 || Integer.parseInt(year) > 2019){
+                Toast.makeText(getApplicationContext(), "Must enter a valid year", Toast.LENGTH_LONG).show();
                 return false;
             }
         else{
@@ -74,6 +74,7 @@ public class CreateMovieEntry extends AppCompatActivity {
             }
         }
         catch (Exception e){
+            Toast.makeText(getApplicationContext(), "An error occurred enter record into database", Toast.LENGTH_LONG).show();
             Log.e("Record Validation", e.getMessage());
             return false;
         }

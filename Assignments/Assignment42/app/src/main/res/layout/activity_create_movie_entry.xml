@@ -56,8 +56,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/titleEnterLbl" />
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,6 +73,7 @@
                 android:layout_marginBottom="20dp"
                 android:textAlignment="center"
                 android:textColor="#000000"
+                android:visibility="visible"
                 tools:text="@string/descEnterTitleLbl" />
 
             <EditText
@@ -81,8 +81,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/descEntryLbl" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
@@ -107,8 +106,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/movieYearEntryLbl" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
@@ -133,8 +131,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/videoEntryLbl" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
@@ -159,8 +156,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
