@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".CreateMovieEntry">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,7 +73,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:textAlignment="center"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                tools:text="@string/descEnterTitleLbl" />
 
             <EditText
                 android:id="@+id/descEntryEditText"
@@ -81,7 +88,59 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/yearEntryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/movieYearLbl"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/yearEntryEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/movieYearEntryLbl" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/videoEntryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/videoEnterTitleLbl"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/videoEntryEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/videoEntryLbl" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -91,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="@string/titleEntryLbl"
+                android:text="@string/imageEnterTitleLbl"
                 android:textAlignment="center"
                 android:textColor="#000000" />
 
@@ -107,35 +166,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center|center_vertical"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/videoEnterTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/titleEntryLbl"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-
-            <LinearLayout
+            <Button
+                android:id="@+id/submitBtn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/line"
-                android:gravity="center_horizontal"></LinearLayout>
-
-            <EditText
-                android:id="@+id/videoEntryEditText"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:backgroundTint="#00AA96"
+                android:text="@string/submitLbl" />
         </LinearLayout>
 
     </LinearLayout>
 
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

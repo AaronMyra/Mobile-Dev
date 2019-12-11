@@ -12,9 +12,13 @@
     <string name="createTirleLbl">Create Movie Data</string>
     <string name="titleEntryLbl">Enter Movie Title</string>
     <string name="titleEnterLbl">Title:</string>
+    <string name="descEnterTitleLbl">Enter Description</string>
     <string name="descEntryLbl">Description:</string>
-    <string name="imageEnterTitleLbl"> Enter Description</string>
-    <string name="imageEntryLbl"> Enter Description</string>
-    <string name="videoEnterTitleLbl"> Enter Description</string>
-    <string name="videoEntryLbl"> Enter Description</string>
+    <string name="imageEnterTitleLbl">Enter Image URL</string>
+    <string name="imageEntryLbl"> Image URL:</string>
+    <string name="videoEnterTitleLbl">Enter Video Code</string>
+    <string name="videoEntryLbl">Video Code:</string>
+    <string name="submitLbl">Submit</string>
+    <string name="movieYearLbl">Enter Movie Film Year</string>
+    <string name="movieYearEntryLbl">Year</string>
 </resources>
