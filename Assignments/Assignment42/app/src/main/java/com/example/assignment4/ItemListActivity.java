@@ -43,7 +43,7 @@ public class ItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
-    static DatabaseHelper mDatabaseHelper;
+    public static DatabaseHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +74,9 @@ public class ItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        deleteTableContents();
-        populateTable();
+        if (mDatabaseHelper.getData().getCount() == 0) {
+            populateTable();
+        }
         Movie.ITEMS.clear();
         Movie.ITEM_MAP.clear();
         getMovies();
@@ -134,7 +135,7 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mListTextView.setText(mValues.get(position).title);
+            holder.movieTitleTV.setText(mValues.get(position).title);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -146,11 +147,11 @@ public class ItemListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mListTextView;
+            final TextView movieTitleTV;
 
             ViewHolder(View view) {
                 super(view);
-                mListTextView = (TextView) view.findViewById(R.id.listTextView);
+                movieTitleTV = (TextView) view.findViewById(R.id.movieTitleTextView);
 
             }
         }
@@ -166,7 +167,9 @@ public class ItemListActivity extends AppCompatActivity {
                 String description = data.getString(2);
                 String year = data.getString(3);
                 String rating = data.getString(4);
-                movie = new Movie(id, title, description, Integer.parseInt(year), Integer.parseInt(rating));
+                String video_code = data.getString(5);
+                String image_url = data.getString(6);
+                movie = new Movie(id, title, description, Integer.parseInt(year), Float.parseFloat(rating), video_code, image_url);
                 movie.mapMovie(movie);
             }
         }catch (Exception e){
@@ -188,8 +191,12 @@ public class ItemListActivity extends AppCompatActivity {
         String descriptions[] = {"Lorem Ipsm", "Lorem Ipsm", "Lorem Ipsm"};
         Integer year[] = {1985, 1980, 1981};
         Integer rating[] = {5, 5, 5};
+        String videoCodes[] = {"qvsgGtivCgs", "JNwNXF9Y6kY", "XkkzKHCx154" };
+        String imageURLS[] = {"https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+                "http://www.gstatic.com/tv/thumb/v22vodart/8884/p8884_v_v8_aw.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51K8ouYrHeL._SY445_.jpg"};
         for (int i = 0; i < 3; i++) {
-            if (!mDatabaseHelper.insertData(titles[i],  descriptions[i], year[i],  rating[i])){
+            if (!mDatabaseHelper.insertData(titles[i],  descriptions[i], year[i],  rating[i], videoCodes[i], imageURLS[i])){
                 Log.e("Database INSERT", "ERROR INSERTING DATA");
             }
         }

@@ -4,4 +4,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="deleteLBL">DELETE</string>
+    <string name="descLbl">Description</string>
+    <string name="playBtnLbl">Play Trailer</string>
+    <string name="ratingStar">⭐</string>
+    <string name="movieBannerLbl">Movie Banner</string>
+    <string name="createTirleLbl">Create Movie Data</string>
+    <string name="titleEntryLbl">Enter Movie Title</string>
+    <string name="titleEnterLbl">Title:</string>
+    <string name="descEntryLbl">Description:</string>
+    <string name="imageEnterTitleLbl"> Enter Description</string>
+    <string name="imageEntryLbl"> Enter Description</string>
+    <string name="videoEnterTitleLbl"> Enter Description</string>
+    <string name="videoEntryLbl"> Enter Description</string>
 </resources>

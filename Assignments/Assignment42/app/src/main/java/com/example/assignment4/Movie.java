@@ -18,14 +18,18 @@ public class Movie {
     public final String title;
     public final String description;
     public final int year;
-    public final int rating;
+    public float rating;
+    public final String  video_code;
+    public final String  image_url;
 
-    public Movie(String id, String title, String description, int year, int rating) {
+    public Movie(String id, String title, String description, int year, float rating, String video_code, String image_url) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.year = year;
         this.rating = rating;
+        this.video_code = video_code;
+        this.image_url = image_url;
     }
 
 
